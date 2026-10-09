@@ -40,3 +40,12 @@ Once the build is complete, you can launch the app directly from the terminal:
 Start-Process "build\Release\CSOPESY_OS_Emulator.exe"
 ```
 *(Alternatively, you can just double-click the `.exe` file inside the `build\Release` folder).*
+
+---
+
+### What to do when you change the code?
+
+You **do not** need to repeat all the steps every time you edit the code!
+* **Skip Step 1**: You only need to run Step 1 (`cmake -B build -S .`) if you modify the `CMakeLists.txt` file (like adding a new source file or a new library).
+* **Do Step 2**: You **must** run Step 2 (`cmake --build build --config Release`) every time you make changes to your C++ code to recompile the project.
+* **Do Step 3**: Run Step 3 to launch and test your updated code.
