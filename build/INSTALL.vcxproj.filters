@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\Zach\OneDrive\Documents\GitHub\CSOPESY-MO4-Group5\build\CMakeFiles\2ab339ceef63055fb111902340f76f6c\INSTALL_force.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{EC169C19-7ECB-34C3-99D5-F5E0A6DB4C93}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

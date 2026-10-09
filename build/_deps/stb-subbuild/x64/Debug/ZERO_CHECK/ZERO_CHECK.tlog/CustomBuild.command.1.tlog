@@ -1,0 +1,10 @@
+^C:\USERS\ZACH\ONEDRIVE\DOCUMENTS\GITHUB\CSOPESY-MO4-GROUP5\BUILD\_DEPS\STB-SUBBUILD\CMAKEFILES\84DE99A19CD0F62C983DECE7FA872EBA\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Users/Zach/OneDrive/Documents/GitHub/CSOPESY-MO4-Group5/build/_deps/stb-subbuild -BC:/Users/Zach/OneDrive/Documents/GitHub/CSOPESY-MO4-Group5/build/_deps/stb-subbuild --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/Zach/OneDrive/Documents/GitHub/CSOPESY-MO4-Group5/build/_deps/stb-subbuild/stb-populate.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

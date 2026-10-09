@@ -1,0 +1,10 @@
+^C:\USERS\ZACH\ONEDRIVE\DOCUMENTS\GITHUB\CSOPESY-MO4-GROUP5\BUILD\CMAKEFILES\2AB339CEEF63055FB111902340F76F6C\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Users/Zach/OneDrive/Documents/GitHub/CSOPESY-MO4-Group5 -BC:/Users/Zach/OneDrive/Documents/GitHub/CSOPESY-MO4-Group5/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/Zach/OneDrive/Documents/GitHub/CSOPESY-MO4-Group5/build/CSOPESY_OS_Emulator.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

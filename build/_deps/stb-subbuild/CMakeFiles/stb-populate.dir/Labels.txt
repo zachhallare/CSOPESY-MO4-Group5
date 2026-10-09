@@ -1,0 +1,14 @@
+# Target labels
+ stb-populate
+# Source files and their labels
+C:/Users/Zach/OneDrive/Documents/GitHub/CSOPESY-MO4-Group5/build/_deps/stb-subbuild/CMakeFiles/stb-populate
+C:/Users/Zach/OneDrive/Documents/GitHub/CSOPESY-MO4-Group5/build/_deps/stb-subbuild/CMakeFiles/84de99a19cd0f62c983dece7fa872eba/stb-populate.rule
+C:/Users/Zach/OneDrive/Documents/GitHub/CSOPESY-MO4-Group5/build/_deps/stb-subbuild/CMakeFiles/f4171c6a6f75161ea492bb7da072de63/stb-populate-complete.rule
+C:/Users/Zach/OneDrive/Documents/GitHub/CSOPESY-MO4-Group5/build/_deps/stb-subbuild/CMakeFiles/98339f283674ac910ec5e489b6a587a8/stb-populate-build.rule
+C:/Users/Zach/OneDrive/Documents/GitHub/CSOPESY-MO4-Group5/build/_deps/stb-subbuild/CMakeFiles/98339f283674ac910ec5e489b6a587a8/stb-populate-configure.rule
+C:/Users/Zach/OneDrive/Documents/GitHub/CSOPESY-MO4-Group5/build/_deps/stb-subbuild/CMakeFiles/98339f283674ac910ec5e489b6a587a8/stb-populate-download.rule
+C:/Users/Zach/OneDrive/Documents/GitHub/CSOPESY-MO4-Group5/build/_deps/stb-subbuild/CMakeFiles/98339f283674ac910ec5e489b6a587a8/stb-populate-install.rule
+C:/Users/Zach/OneDrive/Documents/GitHub/CSOPESY-MO4-Group5/build/_deps/stb-subbuild/CMakeFiles/98339f283674ac910ec5e489b6a587a8/stb-populate-mkdir.rule
+C:/Users/Zach/OneDrive/Documents/GitHub/CSOPESY-MO4-Group5/build/_deps/stb-subbuild/CMakeFiles/98339f283674ac910ec5e489b6a587a8/stb-populate-patch.rule
+C:/Users/Zach/OneDrive/Documents/GitHub/CSOPESY-MO4-Group5/build/_deps/stb-subbuild/CMakeFiles/98339f283674ac910ec5e489b6a587a8/stb-populate-test.rule
+C:/Users/Zach/OneDrive/Documents/GitHub/CSOPESY-MO4-Group5/build/_deps/stb-subbuild/CMakeFiles/98339f283674ac910ec5e489b6a587a8/stb-populate-update.rule

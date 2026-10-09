@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "C:/Users/Zach/OneDrive/Documents/GitHub/CSOPESY-MO4-Group5/build/_deps/glfw-subbuild/CMakeFiles/glfw-populate"
+		},
+		{
+			"file" : "C:/Users/Zach/OneDrive/Documents/GitHub/CSOPESY-MO4-Group5/build/_deps/glfw-subbuild/CMakeFiles/3f2952ede8851e1ad2910c1aa235847f/glfw-populate.rule"
+		},
+		{
+			"file" : "C:/Users/Zach/OneDrive/Documents/GitHub/CSOPESY-MO4-Group5/build/_deps/glfw-subbuild/CMakeFiles/a806bf6a0e55976c02825952e2ac38d1/glfw-populate-complete.rule"
+		},
+		{
+			"file" : "C:/Users/Zach/OneDrive/Documents/GitHub/CSOPESY-MO4-Group5/build/_deps/glfw-subbuild/CMakeFiles/5b99b30aa48c9710418f7f00d9b78eb9/glfw-populate-build.rule"
+		},
+		{
+			"file" : "C:/Users/Zach/OneDrive/Documents/GitHub/CSOPESY-MO4-Group5/build/_deps/glfw-subbuild/CMakeFiles/5b99b30aa48c9710418f7f00d9b78eb9/glfw-populate-configure.rule"
+		},
+		{
+			"file" : "C:/Users/Zach/OneDrive/Documents/GitHub/CSOPESY-MO4-Group5/build/_deps/glfw-subbuild/CMakeFiles/5b99b30aa48c9710418f7f00d9b78eb9/glfw-populate-download.rule"
+		},
+		{
+			"file" : "C:/Users/Zach/OneDrive/Documents/GitHub/CSOPESY-MO4-Group5/build/_deps/glfw-subbuild/CMakeFiles/5b99b30aa48c9710418f7f00d9b78eb9/glfw-populate-install.rule"
+		},
+		{
+			"file" : "C:/Users/Zach/OneDrive/Documents/GitHub/CSOPESY-MO4-Group5/build/_deps/glfw-subbuild/CMakeFiles/5b99b30aa48c9710418f7f00d9b78eb9/glfw-populate-mkdir.rule"
+		},
+		{
+			"file" : "C:/Users/Zach/OneDrive/Documents/GitHub/CSOPESY-MO4-Group5/build/_deps/glfw-subbuild/CMakeFiles/5b99b30aa48c9710418f7f00d9b78eb9/glfw-populate-patch.rule"
+		},
+		{
+			"file" : "C:/Users/Zach/OneDrive/Documents/GitHub/CSOPESY-MO4-Group5/build/_deps/glfw-subbuild/CMakeFiles/5b99b30aa48c9710418f7f00d9b78eb9/glfw-populate-test.rule"
+		},
+		{
+			"file" : "C:/Users/Zach/OneDrive/Documents/GitHub/CSOPESY-MO4-Group5/build/_deps/glfw-subbuild/CMakeFiles/5b99b30aa48c9710418f7f00d9b78eb9/glfw-populate-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"glfw-populate"
+		],
+		"name" : "glfw-populate"
+	}
+}

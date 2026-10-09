@@ -1,0 +1,10 @@
+^C:\USERS\ZACH\ONEDRIVE\DOCUMENTS\GITHUB\CSOPESY-MO4-GROUP5\BUILD\_DEPS\IMGUI-SUBBUILD\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Users/Zach/OneDrive/Documents/GitHub/CSOPESY-MO4-Group5/build/_deps/imgui-subbuild -BC:/Users/Zach/OneDrive/Documents/GitHub/CSOPESY-MO4-Group5/build/_deps/imgui-subbuild --check-stamp-file C:/Users/Zach/OneDrive/Documents/GitHub/CSOPESY-MO4-Group5/build/_deps/imgui-subbuild/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

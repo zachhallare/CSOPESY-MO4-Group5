@@ -1,0 +1,11 @@
+C:/Users/Zach/OneDrive/Documents/GitHub/CSOPESY-MO4-Group5/build/CMakeFiles/imgui_lib.dir
+C:/Users/Zach/OneDrive/Documents/GitHub/CSOPESY-MO4-Group5/build/CMakeFiles/CSOPESY_OS_Emulator.dir
+C:/Users/Zach/OneDrive/Documents/GitHub/CSOPESY-MO4-Group5/build/CMakeFiles/INSTALL.dir
+C:/Users/Zach/OneDrive/Documents/GitHub/CSOPESY-MO4-Group5/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/Zach/OneDrive/Documents/GitHub/CSOPESY-MO4-Group5/build/CMakeFiles/ZERO_CHECK.dir
+C:/Users/Zach/OneDrive/Documents/GitHub/CSOPESY-MO4-Group5/build/_deps/glfw-build/CMakeFiles/uninstall.dir
+C:/Users/Zach/OneDrive/Documents/GitHub/CSOPESY-MO4-Group5/build/_deps/glfw-build/CMakeFiles/INSTALL.dir
+C:/Users/Zach/OneDrive/Documents/GitHub/CSOPESY-MO4-Group5/build/_deps/glfw-build/CMakeFiles/ALL_BUILD.dir
+C:/Users/Zach/OneDrive/Documents/GitHub/CSOPESY-MO4-Group5/build/_deps/glfw-build/src/CMakeFiles/update_mappings.dir
+C:/Users/Zach/OneDrive/Documents/GitHub/CSOPESY-MO4-Group5/build/_deps/glfw-build/src/CMakeFiles/glfw.dir
+C:/Users/Zach/OneDrive/Documents/GitHub/CSOPESY-MO4-Group5/build/_deps/glfw-build/src/CMakeFiles/INSTALL.dir
