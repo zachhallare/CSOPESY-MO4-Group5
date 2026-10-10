@@ -1,33 +1,41 @@
-// Handles the desktop layer: wallpaper background and clock overlay.
+// The desktop: wallpaper, desktop icons, clock and the app windows managed
+// by the shell, with the taskbar on top. Also hosts the shutdown dialog.
 #pragma once
 
-#ifdef _WIN32
-  #ifndef WIN32_LEAN_AND_MEAN
-    #define WIN32_LEAN_AND_MEAN
-  #endif
-  #include <windows.h>
-#endif
-#include <GL/gl.h>
+#include <string>
 #include "imgui.h"
+#include "core/config.h"
+#include "core/fonts.h"
 #include "core/iscreen.h"
+#include "os/shell.h"
 #include "ui/taskbar.h"
+
+class VirtualFS;
 
 class DesktopScreen : public IScreen {
 public:
-    DesktopScreen(ImFont* uiFont, const char* wallpaperPath);
+    DesktopScreen(const Fonts& fonts, const Config& config, VirtualFS& fs);
     ScreenID UpdateAndRender(float deltaTime) override;
+    void     OnCloseRequested() override;   // the window's X behaves like PWR
 
 private:
-    ImFont* uiFont;
+    Fonts   fonts;
+    Shell   shell;
     Taskbar taskbar;
 
-    GLuint wallpaperTex = 0;
-    int    wallpaperW   = 0;
-    int    wallpaperH   = 0;
-    bool   wallpaperOk  = false;
+    std::string selectedIcon;   // key of the selected desktop icon
+    int         powerChoice = 0;
 
-    void RenderWallpaper();
-    void RenderClock();
-    void RenderVersionLabel();
-    void RenderSysInfoWindow(bool* open);
+    std::string renameTarget;   // desktop rename dialog
+    char        renameBuf[128] = "";
+    std::string renameError;
+    bool        openRename = false;
+
+    void     RenderWallpaper();
+    void     RenderVersionLabel();
+    void     RenderDesktopIcons();
+    void     RenderClock();
+    void     RenderRenameDialog();
+    ScreenID RenderPowerDialog();
+    void     CreateOnDesktop(bool folder);
 };

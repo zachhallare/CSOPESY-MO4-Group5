@@ -43,6 +43,17 @@ Start-Process "build\Release\CSOPESY_OS_Emulator.exe"
 
 ---
 
+### Changing parameters without recompiling (`config.txt`)
+`config.txt` (next to `CMakeLists.txt`) is read every time the emulator starts. It sets the wallpaper (an image path or `builtin:aurora` / `builtin:sunset` / `builtin:grid`), the BIOS and loading screen durations, the user name, the clock format, and how often the mock scheduler (taskbar **START**) spawns processes. Edit it and relaunch; the build step also copies it next to the `.exe`. In Visual Studio, Run/Debug starts the emulator from the project folder, so it reads the `config.txt` in the project folder.
+
+### Using the desktop
+* **Taskbar:** start menu, search, **INIT / START / STOP** (initialize, start and stop the mock process scheduler), app buttons (File Explorer, Terminal, Notepad, Task Manager, Settings), and **VOL / NET / PWR** on the right.
+* **PWR** (or the window's X button) opens the shut down / restart dialog. This is the proper way to close the emulator.
+* The file system lives in memory: it survives a restart from the PWR menu but resets when the emulator is closed. Images dropped into `wallpapers/` show up in `/Pictures` and in Settings > Personalization.
+* Type `help` in the Terminal for its commands.
+
+---
+
 ### What to do when you change the code?
 
 You **do not** need to repeat all the steps every time you edit the code!

@@ -1,19 +1,20 @@
-// Taskbar shown at the bottom of the screen.
-// Provides basic system buttons and a working power button to exit.
+// Taskbar pinned to the bottom of the screen: start menu and search, the
+// scheduler buttons (INIT / START / STOP), pinned and running apps, and the
+// system tray (VOL, NET and the PWR shutdown button).
 #pragma once
 
-#include "imgui.h"
+class Shell;
 
 class Taskbar {
 public:
-    void Init();
-
-    // Renders the taskbar and returns true if the user clicked the power button.
-    bool Render();
-
-    // Simple flags to let the main loop know which windows should be shown.
-    bool showSysInfo = false;
+    void Render(Shell& shell);
 
 private:
-    static constexpr float BAR_HEIGHT = 44.0f;
+    char searchBuf[128] = "";
+
+    void RenderStartMenu(Shell& shell);
+    void RenderSearch(Shell& shell);
+    void RenderSchedulerButtons(Shell& shell);
+    void RenderAppButtons(Shell& shell);
+    void RenderTray(Shell& shell);
 };

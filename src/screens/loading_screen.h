@@ -6,15 +6,14 @@
 
 class LoadingScreen : public IScreen {
 public:
-    LoadingScreen(ImFont* monoFont, ImFont* largeFont);
+    LoadingScreen(ImFont* monoFont, ImFont* largeFont, float duration);
     ScreenID UpdateAndRender(float deltaTime) override;
 
 private:
     float timer    = 0.0f;
     float dotTimer = 0.0f;
     int   dotCount = 0;
-
-    static constexpr float DURATION = 3.5f;
+    float duration;
 
     ImFont* monoFont;
     ImFont* largeFont;

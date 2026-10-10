@@ -1,12 +1,12 @@
 #include "bios_screen.h"
 #include <algorithm>
 
-BiosScreen::BiosScreen(ImFont* font) : monoFont(font) {}
+BiosScreen::BiosScreen(ImFont* font, float duration) : duration(duration), monoFont(font) {}
 
 ScreenID BiosScreen::UpdateAndRender(float deltaTime) {
     timer += deltaTime;
 
-    if (timer >= DURATION) {
+    if (timer >= duration) {
         return ScreenID::BOOT_LOADING;
     }
 
@@ -24,6 +24,7 @@ ScreenID BiosScreen::UpdateAndRender(float deltaTime) {
 
     const float pad = 20.0f;
     ImGui::SetCursorPos(ImVec2(pad, pad));
+    ImGui::BeginGroup();   // keeps every line at the padded x, not just the first
 
     struct Line { const char* text; ImVec4 color; bool spacerAfter; };
     static const Line lines[] = {
@@ -60,6 +61,7 @@ ScreenID BiosScreen::UpdateAndRender(float deltaTime) {
         ImGui::PopTextWrapPos();
     }
 
+    ImGui::EndGroup();
     ImGui::End();
     ImGui::PopStyleColor();
     ImGui::PopFont();

@@ -2,11 +2,12 @@
 #pragma once
 
 #include <memory>
-#include <map>
+#include "core/config.h"
+#include "core/fonts.h"
 #include "core/iscreen.h"
 
 struct GLFWwindow;
-struct ImFont;
+class VirtualFS;
 
 class Application {
 public:
@@ -18,10 +19,11 @@ public:
 
 private:
     GLFWwindow* window = nullptr;
+    Fonts       fonts;
+    Config      config;
 
-    ImFont* monoFont = nullptr;
-    ImFont* monoFontLarge = nullptr;
-    ImFont* uiFont = nullptr;
+    // Owned here rather than by the desktop so files survive a restart.
+    std::unique_ptr<VirtualFS> fileSystem;
 
     ScreenID currentScreenId = ScreenID::BOOT_BIOS;
     std::unique_ptr<IScreen> currentScreen;

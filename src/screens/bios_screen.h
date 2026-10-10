@@ -6,11 +6,11 @@
 
 class BiosScreen : public IScreen {
 public:
-    BiosScreen(ImFont* font);
+    BiosScreen(ImFont* font, float duration);
     ScreenID UpdateAndRender(float deltaTime) override;
 
 private:
-    float timer = 0.0f;
-    static constexpr float DURATION = 4.5f;
+    float   timer = 0.0f;
+    float   duration;
     ImFont* monoFont;
 };

@@ -8,13 +8,18 @@
 #include "imgui_impl_glfw.h"
 #include "imgui_impl_opengl3.h"
 
+#include "fs/virtual_fs.h"
 #include "screens/bios_screen.h"
 #include "screens/loading_screen.h"
 #include "screens/desktop.h"
+#include "screens/shutdown_screen.h"
 
 Application::Application() {}
 
 Application::~Application() {
+    // Screens own GL textures, so they go before the GL context does.
+    currentScreen.reset();
+
     if (window) {
         ImGui_ImplOpenGL3_Shutdown();
         ImGui_ImplGlfw_Shutdown();
@@ -24,7 +29,14 @@ Application::~Application() {
     }
 }
 
+static ImFont* LoadFont(ImGuiIO& io, const char* path, float size, ImFont* fallback) {
+    ImFont* font = io.Fonts->AddFontFromFileTTF(path, size);
+    return font ? font : fallback;
+}
+
 bool Application::Init() {
+    config = Config::Load("config.txt");
+
     if (!glfwInit()) {
         fprintf(stderr, "GLFW init failed\n");
         return false;
@@ -47,6 +59,8 @@ bool Application::Init() {
     ImGui::CreateContext();
     ImGuiIO& io = ImGui::GetIO();
     io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
+    io.IniFilename = nullptr;                     // every boot starts with a clean window layout
+    io.ConfigWindowsMoveFromTitleBarOnly = true;  // drag windows by their title bar, like a real OS
 
     ImGui::StyleColorsDark();
 
@@ -55,21 +69,20 @@ bool Application::Init() {
     style.FrameRounding     = 4.0f;
     style.GrabRounding      = 3.0f;
     style.ScrollbarRounding = 4.0f;
+    style.PopupRounding     = 6.0f;
+    style.TabRounding       = 4.0f;
 
     ImGui_ImplGlfw_InitForOpenGL(window, true);
     ImGui_ImplOpenGL3_Init("#version 130");
 
-    monoFont = io.Fonts->AddFontFromFileTTF(
-        "C:\\Windows\\Fonts\\consola.ttf", 16.0f);
-    if (!monoFont) monoFont = io.Fonts->AddFontDefault();
+    fonts.mono      = LoadFont(io, "C:\\Windows\\Fonts\\consola.ttf", 16.0f, nullptr);
+    if (!fonts.mono) fonts.mono = io.Fonts->AddFontDefault();
+    fonts.monoLarge = LoadFont(io, "C:\\Windows\\Fonts\\consola.ttf", 42.0f, fonts.mono);
+    fonts.ui        = LoadFont(io, "C:\\Windows\\Fonts\\segoeui.ttf", 16.0f, fonts.mono);
+    fonts.uiSmall   = LoadFont(io, "C:\\Windows\\Fonts\\segoeui.ttf", 13.0f, fonts.ui);
+    fonts.uiLarge   = LoadFont(io, "C:\\Windows\\Fonts\\segoeui.ttf", 24.0f, fonts.ui);
 
-    monoFontLarge = io.Fonts->AddFontFromFileTTF(
-        "C:\\Windows\\Fonts\\consola.ttf", 42.0f);
-    if (!monoFontLarge) monoFontLarge = monoFont;
-
-    uiFont = io.Fonts->AddFontFromFileTTF(
-        "C:\\Windows\\Fonts\\segoeui.ttf", 16.0f);
-    if (!uiFont) uiFont = io.Fonts->AddFontDefault();
+    fileSystem = std::make_unique<VirtualFS>();
 
     SwitchScreen(ScreenID::BOOT_BIOS);
     return true;
@@ -81,13 +94,17 @@ void Application::SwitchScreen(ScreenID nextScreenId) {
 
     switch (nextScreenId) {
         case ScreenID::BOOT_BIOS:
-            currentScreen = std::make_unique<BiosScreen>(monoFont);
+            currentScreen = std::make_unique<BiosScreen>(fonts.mono, config.biosDuration);
             break;
         case ScreenID::BOOT_LOADING:
-            currentScreen = std::make_unique<LoadingScreen>(monoFont, monoFontLarge);
+            currentScreen = std::make_unique<LoadingScreen>(fonts.mono, fonts.monoLarge, config.loadingDuration);
             break;
         case ScreenID::DESKTOP:
-            currentScreen = std::make_unique<DesktopScreen>(uiFont, "wallpapers/dog.jpg");
+            currentScreen = std::make_unique<DesktopScreen>(fonts, config, *fileSystem);
+            break;
+        case ScreenID::SHUTDOWN:
+        case ScreenID::RESTART:
+            currentScreen = std::make_unique<ShutdownScreen>(fonts, nextScreenId == ScreenID::RESTART);
             break;
         default:
             break;
@@ -96,9 +113,18 @@ void Application::SwitchScreen(ScreenID nextScreenId) {
 
 void Application::Run() {
     float lastTime = (float)glfwGetTime();
+    bool  running  = true;
 
-    while (!glfwWindowShouldClose(window)) {
+    while (running) {
         glfwPollEvents();
+
+        // The X button must not force-exit the OS: the current screen decides
+        // what happens (the desktop opens the same dialog as PWR).
+        if (glfwWindowShouldClose(window)) {
+            glfwSetWindowShouldClose(window, GLFW_FALSE);
+            if (currentScreen)
+                currentScreen->OnCloseRequested();
+        }
 
         float currentTime = (float)glfwGetTime();
         float deltaTime   = currentTime - lastTime;
@@ -108,12 +134,13 @@ void Application::Run() {
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
 
+        ScreenID pendingScreen = ScreenID::NONE;
         if (currentScreen) {
             ScreenID nextScreenId = currentScreen->UpdateAndRender(deltaTime);
             if (nextScreenId == ScreenID::EXIT) {
-                glfwSetWindowShouldClose(window, GLFW_TRUE);
+                running = false;
             } else if (nextScreenId != ScreenID::NONE && nextScreenId != currentScreenId) {
-                SwitchScreen(nextScreenId);
+                pendingScreen = nextScreenId;
             }
         }
 
@@ -127,5 +154,10 @@ void Application::Run() {
 
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
         glfwSwapBuffers(window);
+
+        // Switch only after this frame is drawn: its draw data may still
+        // reference textures owned by the outgoing screen.
+        if (pendingScreen != ScreenID::NONE)
+            SwitchScreen(pendingScreen);
     }
 }

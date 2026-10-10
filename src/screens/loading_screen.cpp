@@ -1,8 +1,17 @@
 #include "loading_screen.h"
+#include <cfloat>
 #include <cstring>
 
-LoadingScreen::LoadingScreen(ImFont* monoFont, ImFont* largeFont)
-    : monoFont(monoFont), largeFont(largeFont) {}
+// "CSOPESY" in the figlet "small" font, as on the spec's splash screen.
+static const char* LOGO[] = {
+    R"(  ___  ___   ___   ___  ___  ___ __   __)",
+    R"( / __|/ __| / _ \ | _ \| __|/ __|\ \ / /)",
+    R"(| (__ \__ \| (_) ||  _/| _| \__ \ \ V / )",
+    R"( \___||___/ \___/ |_|  |___||___/  |_|  )",
+};
+
+LoadingScreen::LoadingScreen(ImFont* monoFont, ImFont* largeFont, float duration)
+    : duration(duration), monoFont(monoFont), largeFont(largeFont) {}
 
 void LoadingScreen::TextCentered(const char* text) {
     float windowWidth = ImGui::GetWindowSize().x;
@@ -22,7 +31,7 @@ ScreenID LoadingScreen::UpdateAndRender(float deltaTime) {
     timer    += deltaTime;
     dotTimer += deltaTime;
 
-    if (timer >= DURATION) {
+    if (timer >= duration) {
         return ScreenID::DESKTOP;
     }
 
@@ -45,21 +54,30 @@ ScreenID LoadingScreen::UpdateAndRender(float deltaTime) {
 
     ImGui::Dummy(ImVec2(0, displaySize.y * 0.22f));
 
-    if (largeFont) ImGui::PushFont(largeFont);
-    TextCenteredColored(ImVec4(0.3f, 0.75f, 1.0f, 1.0f), "C S O P E S Y");
-    if (largeFont) ImGui::PopFont();
+    // ASCII-art logo, drawn from the large monospace font at a smaller size.
+    ImFont*     logoFont = largeFont ? largeFont : monoFont;
+    const float logoSize = 26.0f;
+    ImDrawList* dl       = ImGui::GetWindowDrawList();
+    float       y        = ImGui::GetCursorScreenPos().y;
+    for (const char* row : LOGO) {
+        ImVec2 size = logoFont->CalcTextSizeA(logoSize, FLT_MAX, 0.0f, row);
+        float  x    = ImGui::GetWindowPos().x + (ImGui::GetWindowSize().x - size.x) * 0.5f;
+        dl->AddText(logoFont, logoSize, ImVec2(x, y), IM_COL32(77, 191, 255, 255), row);
+        y += size.y;
+    }
+    ImGui::Dummy(ImVec2(0, y - ImGui::GetCursorScreenPos().y));
 
     ImGui::Dummy(ImVec2(0, 12));
 
     TextCenteredColored(ImVec4(0.85f, 0.85f, 0.85f, 1.0f),
         "CSOPESY Operating System Emulator v1.0");
     TextCenteredColored(ImVec4(0.7f, 0.7f, 0.7f, 1.0f),
-        "Created By: Dr. Neil Patrick Del Gallego");
+        "Created By: Zach Halle, Marga Ramos, and Neil Tan");
 
     ImGui::Dummy(ImVec2(0, 24));
 
     TextCenteredColored(ImVec4(0.9f, 0.9f, 0.6f, 1.0f),
-        "Part of Project Amito:");
+        "Part of Project Anito:");
     TextCenteredColored(ImVec4(0.75f, 0.75f, 0.75f, 1.0f),
         "Support for the PH Gaming Industry Towards Embracing");
     TextCenteredColored(ImVec4(0.75f, 0.75f, 0.75f, 1.0f),

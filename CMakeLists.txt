@@ -48,11 +48,14 @@ add_library(imgui_lib STATIC
     ${imgui_SOURCE_DIR}/imgui_widgets.cpp
     ${imgui_SOURCE_DIR}/backends/imgui_impl_glfw.cpp
     ${imgui_SOURCE_DIR}/backends/imgui_impl_opengl3.cpp
+    ${imgui_SOURCE_DIR}/misc/cpp/imgui_stdlib.cpp
 )
 target_include_directories(imgui_lib PUBLIC
     ${imgui_SOURCE_DIR}
     ${imgui_SOURCE_DIR}/backends
 )
+# Lets us write ImVec2 math (a + b, a * 0.5f) everywhere.
+target_compile_definitions(imgui_lib PUBLIC IMGUI_DEFINE_MATH_OPERATORS)
 target_link_libraries(imgui_lib PUBLIC glfw)
 
 # Find OpenGL
@@ -62,10 +65,26 @@ find_package(OpenGL REQUIRED)
 add_executable(${PROJECT_NAME}
     src/core/main.cpp
     src/core/application.cpp
+    src/core/config.cpp
+    src/core/texture_cache.cpp
+    src/fs/virtual_fs.cpp
+    src/os/process_manager.cpp
+    src/os/shell.cpp
+    src/apps/app.cpp
+    src/apps/file_explorer.cpp
+    src/apps/notepad.cpp
+    src/apps/terminal.cpp
+    src/apps/task_manager.cpp
+    src/apps/settings_app.cpp
+    src/apps/system_info.cpp
     src/screens/bios_screen.cpp
     src/screens/loading_screen.cpp
     src/screens/desktop.cpp
+    src/screens/shutdown_screen.cpp
+    src/ui/icons.cpp
+    src/ui/quick_settings.cpp
     src/ui/taskbar.cpp
+    src/ui/wallpaper.cpp
     src/lib/stb_image_impl.cpp
 )
 
@@ -79,9 +98,17 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
     OpenGL::GL
 )
 
-# Copy wallpapers next to the executable
+# Copy wallpapers and config.txt next to the executable
 add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_directory
         "${CMAKE_SOURCE_DIR}/wallpapers"
         "$<TARGET_FILE_DIR:${PROJECT_NAME}>/wallpapers"
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different
+        "${CMAKE_SOURCE_DIR}/config.txt"
+        "$<TARGET_FILE_DIR:${PROJECT_NAME}>/config.txt"
 )
+
+# Visual Studio: Run/Debug starts the emulator (not ALL_BUILD) from the project
+# folder, so edits to config.txt there apply without rebuilding.
+set_property(DIRECTORY ${CMAKE_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT ${PROJECT_NAME})
+set_target_properties(${PROJECT_NAME} PROPERTIES VS_DEBUGGER_WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}")
