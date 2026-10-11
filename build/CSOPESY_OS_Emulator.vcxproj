@@ -65,24 +65,28 @@
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.exe</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
+    <LocalDebuggerWorkingDirectory Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:/Users/Zach/OneDrive/Documents/GitHub/CSOPESY-MO4-Group5</LocalDebuggerWorkingDirectory>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\Zach\OneDrive\Documents\GitHub\CSOPESY-MO4-Group5\build\Release\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CSOPESY_OS_Emulator.dir\Release\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CSOPESY_OS_Emulator</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.exe</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
+    <LocalDebuggerWorkingDirectory Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:/Users/Zach/OneDrive/Documents/GitHub/CSOPESY-MO4-Group5</LocalDebuggerWorkingDirectory>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\Zach\OneDrive\Documents\GitHub\CSOPESY-MO4-Group5\build\MinSizeRel\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CSOPESY_OS_Emulator.dir\MinSizeRel\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CSOPESY_OS_Emulator</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.exe</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</GenerateManifest>
+    <LocalDebuggerWorkingDirectory Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:/Users/Zach/OneDrive/Documents/GitHub/CSOPESY-MO4-Group5</LocalDebuggerWorkingDirectory>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\Zach\OneDrive\Documents\GitHub\CSOPESY-MO4-Group5\build\RelWithDebInfo\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CSOPESY_OS_Emulator.dir\RelWithDebInfo\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CSOPESY_OS_Emulator</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.exe</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</GenerateManifest>
+    <LocalDebuggerWorkingDirectory Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:/Users/Zach/OneDrive/Documents/GitHub/CSOPESY-MO4-Group5</LocalDebuggerWorkingDirectory>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -99,12 +103,12 @@
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <SupportJustMyCode></SupportJustMyCode>
       <UseFullPaths>false</UseFullPaths>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;IMGUI_DEFINE_MATH_OPERATORS;CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;IMGUI_DEFINE_MATH_OPERATORS;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>C:\Users\Zach\OneDrive\Documents\GitHub\CSOPESY-MO4-Group5\build\_deps\stb-src;C:\Users\Zach\OneDrive\Documents\GitHub\CSOPESY-MO4-Group5\src;C:\Users\Zach\OneDrive\Documents\GitHub\CSOPESY-MO4-Group5\build\_deps\imgui-src;C:\Users\Zach\OneDrive\Documents\GitHub\CSOPESY-MO4-Group5\build\_deps\imgui-src\backends;C:\Users\Zach\OneDrive\Documents\GitHub\CSOPESY-MO4-Group5\build\_deps\glfw-src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
@@ -119,6 +123,8 @@
       <Message></Message>
       <Command>setlocal
 "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E copy_directory C:/Users/Zach/OneDrive/Documents/GitHub/CSOPESY-MO4-Group5/wallpapers C:/Users/Zach/OneDrive/Documents/GitHub/CSOPESY-MO4-Group5/build/Debug/wallpapers
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E copy_if_different C:/Users/Zach/OneDrive/Documents/GitHub/CSOPESY-MO4-Group5/config.txt C:/Users/Zach/OneDrive/Documents/GitHub/CSOPESY-MO4-Group5/build/Debug/config.txt
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -155,14 +161,14 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <SupportJustMyCode></SupportJustMyCode>
       <UseFullPaths>false</UseFullPaths>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;IMGUI_DEFINE_MATH_OPERATORS;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <DebugInformationFormat>
       </DebugInformationFormat>
       <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;IMGUI_DEFINE_MATH_OPERATORS;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>C:\Users\Zach\OneDrive\Documents\GitHub\CSOPESY-MO4-Group5\build\_deps\stb-src;C:\Users\Zach\OneDrive\Documents\GitHub\CSOPESY-MO4-Group5\src;C:\Users\Zach\OneDrive\Documents\GitHub\CSOPESY-MO4-Group5\build\_deps\imgui-src;C:\Users\Zach\OneDrive\Documents\GitHub\CSOPESY-MO4-Group5\build\_deps\imgui-src\backends;C:\Users\Zach\OneDrive\Documents\GitHub\CSOPESY-MO4-Group5\build\_deps\glfw-src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
@@ -177,6 +183,8 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <Message></Message>
       <Command>setlocal
 "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E copy_directory C:/Users/Zach/OneDrive/Documents/GitHub/CSOPESY-MO4-Group5/wallpapers C:/Users/Zach/OneDrive/Documents/GitHub/CSOPESY-MO4-Group5/build/Release/wallpapers
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E copy_if_different C:/Users/Zach/OneDrive/Documents/GitHub/CSOPESY-MO4-Group5/config.txt C:/Users/Zach/OneDrive/Documents/GitHub/CSOPESY-MO4-Group5/build/Release/config.txt
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -213,14 +221,14 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <SupportJustMyCode></SupportJustMyCode>
       <UseFullPaths>false</UseFullPaths>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="MinSizeRel"</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;IMGUI_DEFINE_MATH_OPERATORS;CMAKE_INTDIR="MinSizeRel"</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <DebugInformationFormat>
       </DebugInformationFormat>
       <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"MinSizeRel\"</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;IMGUI_DEFINE_MATH_OPERATORS;CMAKE_INTDIR=\"MinSizeRel\"</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>C:\Users\Zach\OneDrive\Documents\GitHub\CSOPESY-MO4-Group5\build\_deps\stb-src;C:\Users\Zach\OneDrive\Documents\GitHub\CSOPESY-MO4-Group5\src;C:\Users\Zach\OneDrive\Documents\GitHub\CSOPESY-MO4-Group5\build\_deps\imgui-src;C:\Users\Zach\OneDrive\Documents\GitHub\CSOPESY-MO4-Group5\build\_deps\imgui-src\backends;C:\Users\Zach\OneDrive\Documents\GitHub\CSOPESY-MO4-Group5\build\_deps\glfw-src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
@@ -235,6 +243,8 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <Message></Message>
       <Command>setlocal
 "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E copy_directory C:/Users/Zach/OneDrive/Documents/GitHub/CSOPESY-MO4-Group5/wallpapers C:/Users/Zach/OneDrive/Documents/GitHub/CSOPESY-MO4-Group5/build/MinSizeRel/wallpapers
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E copy_if_different C:/Users/Zach/OneDrive/Documents/GitHub/CSOPESY-MO4-Group5/config.txt C:/Users/Zach/OneDrive/Documents/GitHub/CSOPESY-MO4-Group5/build/MinSizeRel/config.txt
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -272,12 +282,12 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <SupportJustMyCode></SupportJustMyCode>
       <UseFullPaths>false</UseFullPaths>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;IMGUI_DEFINE_MATH_OPERATORS;CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;IMGUI_DEFINE_MATH_OPERATORS;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>C:\Users\Zach\OneDrive\Documents\GitHub\CSOPESY-MO4-Group5\build\_deps\stb-src;C:\Users\Zach\OneDrive\Documents\GitHub\CSOPESY-MO4-Group5\src;C:\Users\Zach\OneDrive\Documents\GitHub\CSOPESY-MO4-Group5\build\_deps\imgui-src;C:\Users\Zach\OneDrive\Documents\GitHub\CSOPESY-MO4-Group5\build\_deps\imgui-src\backends;C:\Users\Zach\OneDrive\Documents\GitHub\CSOPESY-MO4-Group5\build\_deps\glfw-src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
@@ -292,6 +302,8 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <Message></Message>
       <Command>setlocal
 "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E copy_directory C:/Users/Zach/OneDrive/Documents/GitHub/CSOPESY-MO4-Group5/wallpapers C:/Users/Zach/OneDrive/Documents/GitHub/CSOPESY-MO4-Group5/build/RelWithDebInfo/wallpapers
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E copy_if_different C:/Users/Zach/OneDrive/Documents/GitHub/CSOPESY-MO4-Group5/config.txt C:/Users/Zach/OneDrive/Documents/GitHub/CSOPESY-MO4-Group5/build/RelWithDebInfo/config.txt
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -374,10 +386,26 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   <ItemGroup>
     <ClCompile Include="C:\Users\Zach\OneDrive\Documents\GitHub\CSOPESY-MO4-Group5\src\core\main.cpp" />
     <ClCompile Include="C:\Users\Zach\OneDrive\Documents\GitHub\CSOPESY-MO4-Group5\src\core\application.cpp" />
+    <ClCompile Include="C:\Users\Zach\OneDrive\Documents\GitHub\CSOPESY-MO4-Group5\src\core\config.cpp" />
+    <ClCompile Include="C:\Users\Zach\OneDrive\Documents\GitHub\CSOPESY-MO4-Group5\src\core\texture_cache.cpp" />
+    <ClCompile Include="C:\Users\Zach\OneDrive\Documents\GitHub\CSOPESY-MO4-Group5\src\fs\virtual_fs.cpp" />
+    <ClCompile Include="C:\Users\Zach\OneDrive\Documents\GitHub\CSOPESY-MO4-Group5\src\os\process_manager.cpp" />
+    <ClCompile Include="C:\Users\Zach\OneDrive\Documents\GitHub\CSOPESY-MO4-Group5\src\os\shell.cpp" />
+    <ClCompile Include="C:\Users\Zach\OneDrive\Documents\GitHub\CSOPESY-MO4-Group5\src\apps\app.cpp" />
+    <ClCompile Include="C:\Users\Zach\OneDrive\Documents\GitHub\CSOPESY-MO4-Group5\src\apps\file_explorer.cpp" />
+    <ClCompile Include="C:\Users\Zach\OneDrive\Documents\GitHub\CSOPESY-MO4-Group5\src\apps\notepad.cpp" />
+    <ClCompile Include="C:\Users\Zach\OneDrive\Documents\GitHub\CSOPESY-MO4-Group5\src\apps\terminal.cpp" />
+    <ClCompile Include="C:\Users\Zach\OneDrive\Documents\GitHub\CSOPESY-MO4-Group5\src\apps\task_manager.cpp" />
+    <ClCompile Include="C:\Users\Zach\OneDrive\Documents\GitHub\CSOPESY-MO4-Group5\src\apps\settings_app.cpp" />
+    <ClCompile Include="C:\Users\Zach\OneDrive\Documents\GitHub\CSOPESY-MO4-Group5\src\apps\system_info.cpp" />
     <ClCompile Include="C:\Users\Zach\OneDrive\Documents\GitHub\CSOPESY-MO4-Group5\src\screens\bios_screen.cpp" />
     <ClCompile Include="C:\Users\Zach\OneDrive\Documents\GitHub\CSOPESY-MO4-Group5\src\screens\loading_screen.cpp" />
     <ClCompile Include="C:\Users\Zach\OneDrive\Documents\GitHub\CSOPESY-MO4-Group5\src\screens\desktop.cpp" />
+    <ClCompile Include="C:\Users\Zach\OneDrive\Documents\GitHub\CSOPESY-MO4-Group5\src\screens\shutdown_screen.cpp" />
+    <ClCompile Include="C:\Users\Zach\OneDrive\Documents\GitHub\CSOPESY-MO4-Group5\src\ui\icons.cpp" />
+    <ClCompile Include="C:\Users\Zach\OneDrive\Documents\GitHub\CSOPESY-MO4-Group5\src\ui\quick_settings.cpp" />
     <ClCompile Include="C:\Users\Zach\OneDrive\Documents\GitHub\CSOPESY-MO4-Group5\src\ui\taskbar.cpp" />
+    <ClCompile Include="C:\Users\Zach\OneDrive\Documents\GitHub\CSOPESY-MO4-Group5\src\ui\wallpaper.cpp" />
     <ClCompile Include="C:\Users\Zach\OneDrive\Documents\GitHub\CSOPESY-MO4-Group5\src\lib\stb_image_impl.cpp" />
   </ItemGroup>
   <ItemGroup />

@@ -22,6 +22,9 @@
     <ClCompile Include="C:\Users\Zach\OneDrive\Documents\GitHub\CSOPESY-MO4-Group5\build\_deps\imgui-src\backends\imgui_impl_opengl3.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="C:\Users\Zach\OneDrive\Documents\GitHub\CSOPESY-MO4-Group5\build\_deps\imgui-src\misc\cpp\imgui_stdlib.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="C:\Users\Zach\OneDrive\Documents\GitHub\CSOPESY-MO4-Group5\CMakeLists.txt" />

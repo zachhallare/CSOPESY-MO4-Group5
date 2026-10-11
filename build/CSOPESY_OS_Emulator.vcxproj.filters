@@ -7,6 +7,42 @@
     <ClCompile Include="C:\Users\Zach\OneDrive\Documents\GitHub\CSOPESY-MO4-Group5\src\core\application.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="C:\Users\Zach\OneDrive\Documents\GitHub\CSOPESY-MO4-Group5\src\core\config.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Zach\OneDrive\Documents\GitHub\CSOPESY-MO4-Group5\src\core\texture_cache.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Zach\OneDrive\Documents\GitHub\CSOPESY-MO4-Group5\src\fs\virtual_fs.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Zach\OneDrive\Documents\GitHub\CSOPESY-MO4-Group5\src\os\process_manager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Zach\OneDrive\Documents\GitHub\CSOPESY-MO4-Group5\src\os\shell.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Zach\OneDrive\Documents\GitHub\CSOPESY-MO4-Group5\src\apps\app.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Zach\OneDrive\Documents\GitHub\CSOPESY-MO4-Group5\src\apps\file_explorer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Zach\OneDrive\Documents\GitHub\CSOPESY-MO4-Group5\src\apps\notepad.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Zach\OneDrive\Documents\GitHub\CSOPESY-MO4-Group5\src\apps\terminal.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Zach\OneDrive\Documents\GitHub\CSOPESY-MO4-Group5\src\apps\task_manager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Zach\OneDrive\Documents\GitHub\CSOPESY-MO4-Group5\src\apps\settings_app.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Zach\OneDrive\Documents\GitHub\CSOPESY-MO4-Group5\src\apps\system_info.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="C:\Users\Zach\OneDrive\Documents\GitHub\CSOPESY-MO4-Group5\src\screens\bios_screen.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -16,7 +52,19 @@
     <ClCompile Include="C:\Users\Zach\OneDrive\Documents\GitHub\CSOPESY-MO4-Group5\src\screens\desktop.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="C:\Users\Zach\OneDrive\Documents\GitHub\CSOPESY-MO4-Group5\src\screens\shutdown_screen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Zach\OneDrive\Documents\GitHub\CSOPESY-MO4-Group5\src\ui\icons.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Zach\OneDrive\Documents\GitHub\CSOPESY-MO4-Group5\src\ui\quick_settings.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="C:\Users\Zach\OneDrive\Documents\GitHub\CSOPESY-MO4-Group5\src\ui\taskbar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Zach\OneDrive\Documents\GitHub\CSOPESY-MO4-Group5\src\ui\wallpaper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="C:\Users\Zach\OneDrive\Documents\GitHub\CSOPESY-MO4-Group5\src\lib\stb_image_impl.cpp">

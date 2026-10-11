@@ -1,62 +1,92 @@
 # CSOPESY Desktop OS Emulator
 
-A minimal, real-time graphical desktop OS mockup built with C++, OpenGL, and Dear ImGui.
+A minimal, real-time graphical desktop operating system mockup built with C++, OpenGL, and Dear ImGui.
 
-## How to Build and Run (Windows)
+<!-- ABOUT THE PROJECT -->
+## About The Project
 
-You need to have **CMake** and **Visual Studio** (or MSVC build tools) installed on your system.
+CSOPESY Desktop OS Emulator is an interactive desktop operating system mockup designed to simulate core OS features and components in real time. It features a desktop shell with window management, a mock process scheduler, an in-memory virtual file system, and essential built-in utilities (Terminal, File Explorer, Task Manager, Notepad, and Settings).
 
-### 0. Check Prerequisites
-To verify you have the necessary tools installed, run these commands in your terminal:
+### Built With
 
-**Check CMake:**
-```powershell
-cmake --version
-```
-*(If you get an error, you can install it quickly by running `winget install kitware.cmake` and restarting your terminal).*
+* [C++](https://en.cppreference.com/)
+* [Dear ImGui](https://github.com/ocornut/imgui)
+* [OpenGL](https://www.opengl.org/) / [GLFW](https://www.glfw.org/)
+* [CMake](https://cmake.org/)
 
-**Check Visual Studio:**
-```powershell
-& "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe" -latest
-```
-*(If you get an error or no output, download Visual Studio 2022 from Microsoft's website. Make sure to select the **"Desktop development with C++"** workload during installation).*
+<!-- GETTING STARTED -->
+## Getting Started
 
-### 1. Configure the project
-Open your terminal (PowerShell or Command Prompt) in this project folder and run:
-```powershell
-cmake -B build -S .
-```
-*(This will download the required libraries like GLFW and ImGui automatically).*
+Follow these steps to set up and run the OS emulator locally on Windows.
 
-### 2. Build the executable
-Compile the project by running:
-```powershell
-cmake --build build --config Release
-```
+### Prerequisites
 
-### 3. Run the OS Emulator
-Once the build is complete, you can launch the app directly from the terminal:
-```powershell
-Start-Process "build\Release\CSOPESY_OS_Emulator.exe"
-```
-*(Alternatively, you can just double-click the `.exe` file inside the `build\Release` folder).*
+Make sure you have CMake and Visual Studio (MSVC) with C++ build tools installed.
 
----
+* **CMake** (v3.16+)
+  ```powershell
+  cmake --version
+  ```
+  *(If not installed: `winget install kitware.cmake`)*
 
-### Changing parameters without recompiling (`config.txt`)
-`config.txt` (next to `CMakeLists.txt`) is read every time the emulator starts. It sets the wallpaper (an image path or `builtin:aurora` / `builtin:sunset` / `builtin:grid`), the BIOS and loading screen durations, the user name, the clock format, and how often the mock scheduler (taskbar **START**) spawns processes. Edit it and relaunch; the build step also copies it next to the `.exe`. In Visual Studio, Run/Debug starts the emulator from the project folder, so it reads the `config.txt` in the project folder.
+* **Visual Studio 2022** (with **"Desktop development with C++"** workload)
+  ```powershell
+  & "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe" -latest
+  ```
 
-### Using the desktop
-* **Taskbar:** start menu, search, **INIT / START / STOP** (initialize, start and stop the mock process scheduler), app buttons (File Explorer, Terminal, Notepad, Task Manager, Settings), and **VOL / NET / PWR** on the right.
-* **PWR** (or the window's X button) opens the shut down / restart dialog. This is the proper way to close the emulator.
-* The file system lives in memory: it survives a restart from the PWR menu but resets when the emulator is closed. Images dropped into `wallpapers/` show up in `/Pictures` and in Settings > Personalization.
-* Type `help` in the Terminal for its commands.
+### Installation
 
----
+1. Clone the repository
+   ```powershell
+   git clone https://github.com/zachhallare/CSOPESY-MO4-Group5.git
+   cd CSOPESY-MO4-Group5
+   ```
 
-### What to do when you change the code?
+2. Configure the project
+   ```powershell
+   cmake -B build -S .
+   ```
+   *(CMake will automatically fetch GLFW and Dear ImGui).*
 
-You **do not** need to repeat all the steps every time you edit the code!
-* **Skip Step 1**: You only need to run Step 1 (`cmake -B build -S .`) if you modify the `CMakeLists.txt` file (like adding a new source file or a new library).
-* **Do Step 2**: You **must** run Step 2 (`cmake --build build --config Release`) every time you make changes to your C++ code to recompile the project.
-* **Do Step 3**: Run Step 3 to launch and test your updated code.
+3. Build the executable
+   ```powershell
+   cmake --build build --config Release
+   ```
+
+4. Run the OS Emulator
+   ```powershell
+   Start-Process "build\Release\CSOPESY_OS_Emulator.exe"
+   ```
+   *(Or double-click `CSOPESY_OS_Emulator.exe` inside `build\Release`)*
+
+<!-- USAGE EXAMPLES -->
+## Usage
+
+### Desktop Shell & Navigation
+* **Taskbar:** Access the Start Menu, App Search, Process Scheduler controls (**INIT / START / STOP**), App shortcuts, and System Tray (**VOL / NET / PWR**).
+* **Power Controls:** Click **PWR** (or close the window) to cleanly trigger the Shutdown / Restart menu.
+* **Virtual File System:** Maintains an in-memory file system across session restarts. Custom images placed in `wallpapers/` can be accessed in `/Pictures` and selected in **Settings > Personalization**.
+* **Terminal:** Launch the terminal and execute `help` to see all available commands.
+
+### Configuration (`config.txt`)
+Edit `config.txt` in the root folder to customize settings without recompiling:
+* **Wallpaper:** Set custom file paths or select built-in styles (`builtin:aurora`, `builtin:sunset`, `builtin:grid`).
+* **Durations:** Adjust BIOS boot time and OS loading screen duration.
+* **System Settings:** Configure default username, clock display format, and scheduler process generation rates.
+
+<!-- CONTACT -->
+## Contact
+
+**Group 5:**
+* Zach Hallare
+* Marga Ramos
+* Neil Tan
+
+Project Link: [https://github.com/zachhallare/CSOPESY-MO4-Group5](https://github.com/zachhallare/CSOPESY-MO4-Group5)
+
+<!-- ACKNOWLEDGEMENTS -->
+## Acknowledgements
+
+* [Dear ImGui](https://github.com/ocornut/imgui) by Omar Cornut
+* [GLFW](https://www.glfw.org/)
+* [Best-README-Template](https://github.com/othneildrew/Best-README-Template)
